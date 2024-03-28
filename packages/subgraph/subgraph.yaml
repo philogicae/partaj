@@ -3,6 +3,7 @@ description: Greetings
 repository: https://github.com/scaffold-eth/se-2/packages/subgraph/
 schema:
   file: ./src/schema.graphql
+
 dataSources:
   - kind: ethereum/contract
     name: YourContract
