@@ -26,7 +26,7 @@ services:
     ports:
       - "5001:5001"
     volumes:
-      - ./data/ipfs:/data/ipfs
+      - /docker/thegraph/ipfs:/data/ipfs
   postgres:
     image: postgres
     ports:
@@ -38,4 +38,4 @@ services:
       POSTGRES_DB: graph-node
       POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
     volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+      - /docker/thegraph/postgres:/var/lib/postgresql/data
