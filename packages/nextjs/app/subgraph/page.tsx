@@ -69,7 +69,7 @@ const Subgraph: NextPage = () => {
               <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
               <p className="mb-0">Explore data using the</p>
               <Link
-                href="http://localhost:8000/subgraphs/name/scaffold-eth/your-contract/graphql"
+                href="http://partaj.rphi.xyz/graph/subgraphs/name/scaffold-eth/your-contract/graphql"
                 passHref
                 className="link"
                 target="_blank"

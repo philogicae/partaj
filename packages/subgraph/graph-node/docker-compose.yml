@@ -17,7 +17,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: "ipfs:5001"
-      ethereum: "localhost:http://host.docker.internal:8545"
+      ethereum: "https://sepolia.infura.io/v3/b657896314f1456c9d8b9cf9f568f3b4"
       GRAPH_LOG: info
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -31,11 +31,7 @@ services:
     image: postgres
     ports:
       - "5432:5432"
-    command:
-      [
-        "postgres",
-        "-cshared_preload_libraries=pg_stat_statements"
-      ]
+    command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
     environment:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
