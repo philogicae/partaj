@@ -29,6 +29,8 @@ function publishContract(contractName: string, networkName: string) {
     }
     graphConfigObject[networkName][contractName].address =
       contractObject.address;
+    graphConfigObject[networkName][contractName].startBlock =
+      contractObject.startBlock;
 
     fs.writeFileSync(
       graphConfigPath,
@@ -65,7 +67,7 @@ async function main() {
 }
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });
