@@ -1,27 +1,96 @@
 specVersion: 0.0.4
-description: Greetings
-repository: https://github.com/scaffold-eth/se-2/packages/subgraph/
+description: Partaj
+repository: https://github.com/philogicae/partaj/tree/main/packages/subgraph
 schema:
   file: ./src/schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: YourContract
-    network: sepolia
+    name: Partaj
+    network: arbitrum-sepolia
     source:
-      abi: YourContract
-      address: "0xd3Bc78280dC36970a36815b1c06fBb58B6f57ACA"
-      startBlock: 5580674
+      abi: Partaj
+      address: "0x09e10c87f476da39991a932f47059f14b2818d75"
+      startBlock: 28210409
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - Greeting
-        - Sender
+        - Token
+        - Owner
+        - Contract
+        - Publish
+        - Cancel
+        - PublishHandler
+        - CancelHandler
       abis:
-        - name: YourContract
-          file: ./abis/sepolia_YourContract.json
+        - name: Partaj
+          file: ./abis/arbitrum-sepolia_Partaj.json
       eventHandlers:
-        - event: GreetingChange(indexed address,string,bool,uint256)
-          handler: handleGreetingChange
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Publish(indexed address,indexed uint256,indexed bytes32)
+          handler: handlePublish
+        - event: Cancel(indexed uint256)
+          handler: handleCancel
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: Partaj
+    network: base-sepolia
+    source:
+      abi: Partaj
+      address: "0x08738659070713b8a34c8f83e89b44f9b802eb97"
+      startBlock: 7978754
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+        - Owner
+        - Contract
+        - Publish
+        - Cancel
+        - PublishHandler
+        - CancelHandler
+      abis:
+        - name: Partaj
+          file: ./abis/base-sepolia_Partaj.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Publish(indexed address,indexed uint256,indexed bytes32)
+          handler: handlePublish
+        - event: Cancel(indexed uint256)
+          handler: handleCancel
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: Partaj
+    network: bsc-testnet
+    source:
+      abi: Partaj
+      address: "0x08738659070713B8a34C8F83e89B44F9B802Eb97"
+      startBlock: 39004314
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+        - Owner
+        - Contract
+        - Publish
+        - Cancel
+        - PublishHandler
+        - CancelHandler
+      abis:
+        - name: Partaj
+          file: ./abis/bsc-testnet_Partaj.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: Publish(indexed address,indexed uint256,indexed bytes32)
+          handler: handlePublish
+        - event: Cancel(indexed uint256)
+          handler: handleCancel
       file: ./src/mapping.ts
