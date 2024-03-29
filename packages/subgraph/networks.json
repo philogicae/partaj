@@ -1,8 +1,20 @@
 {
-  "sepolia": {
-    "YourContract": {
-      "address": "0xd3Bc78280dC36970a36815b1c06fBb58B6f57ACA",
-      "startBlock": 5580674
+  "arbitrum-sepolia": {
+    "Partaj": {
+      "address": "0x09e10c87f476da39991a932f47059f14b2818d75",
+      "startBlock": 28210409
+    }
+  },
+  "base-sepolia": {
+    "Partaj": {
+      "address": "0x08738659070713b8a34c8f83e89b44f9b802eb97",
+      "startBlock": 7978754
+    }
+  },
+  "bsc-testnet": {
+    "Partaj": {
+      "address": "0x08738659070713B8a34C8F83e89B44F9B802Eb97",
+      "startBlock": 39004314
     }
   }
 }

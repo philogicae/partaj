@@ -2167,6 +2167,7 @@ __metadata:
     hardhat-deploy: ^0.11.45
     hardhat-deploy-ethers: ^0.4.1
     hardhat-gas-reporter: ^1.0.9
+    ipfs-cid-in-bytes32: ^1.0.4
     prettier: ^2.8.4
     qrcode: ^1.5.1
     solidity-coverage: ^0.8.5
@@ -9637,6 +9638,13 @@ __metadata:
   version: 2.0.0
   resolution: "ip@npm:2.0.0"
   checksum: cfcfac6b873b701996d71ec82a7dd27ba92450afdb421e356f44044ed688df04567344c36cbacea7d01b1c39a4c732dc012570ebe9bebfb06f27314bca625349
+  languageName: node
+  linkType: hard
+
+"ipfs-cid-in-bytes32@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "ipfs-cid-in-bytes32@npm:1.0.4"
+  checksum: 5cd49a99b0269dc6d6aa6403692daf2acda138c0eb368c0bc54376f56f9e25415784cd142410ebc6f15faf5ece7f3147c439e21ffeba15d3910547bba93dab19
   languageName: node
   linkType: hard
 
