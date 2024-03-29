@@ -4,8 +4,8 @@ import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithPro
 import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+const baseUrl = process.env.NEXT_PUBLIC_URL
+  ? `https://${process.env.NEXT_PUBLIC_URL}`
   : `http://localhost:${process.env.PORT}`;
 const imageUrl = `${baseUrl}/thumbnail.jpg`;
 
@@ -43,6 +43,13 @@ export const metadata: Metadata = {
 };
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
+  if (typeof window !== "undefined") {
+    const storedVersion = localStorage.getItem("appVersion");
+    if (storedVersion !== process.env.appVersion) {
+      localStorage.setItem("appVersion", process.env.appVersion as string);
+      window.location.reload();
+    }
+  }
   return (
     <html suppressHydrationWarning>
       <body>

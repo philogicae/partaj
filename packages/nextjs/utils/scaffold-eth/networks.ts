@@ -41,20 +41,26 @@ export const NETWORKS_EXTRA_DATA: Record<string, ChainAttributes> = {
   [chains.optimism.id]: {
     color: "#f01a37",
   },
-  [chains.arbitrumSepolia.id]: {
-    color: "#28a0f0",
-  },
   [chains.arbitrum.id]: {
     color: "#28a0f0",
   },
-  [chains.fantom.id]: {
+  [chains.arbitrumSepolia.id]: {
+    color: "#28a0f0",
+  },
+  [chains.base.id]: {
     color: "#1969ff",
   },
-  [chains.fantomTestnet.id]: {
+  [chains.baseSepolia.id]: {
     color: "#1969ff",
   },
   [chains.scrollSepolia.id]: {
     color: "#fbebd4",
+  },
+  [chains.bsc.id]: {
+    color: "#F0B90B",
+  },
+  [chains.bscTestnet.id]: {
+    color: "#F0B90B",
   },
 };
 
