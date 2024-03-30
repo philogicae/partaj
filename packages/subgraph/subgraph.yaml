@@ -6,7 +6,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Partaj
-    network: arbitrum-sepolia
+    network: arbitrumSepolia
     source:
       abi: Partaj
       address: "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2"
@@ -25,7 +25,7 @@ dataSources:
         - CancelHandler
       abis:
         - name: Partaj
-          file: ./abis/arbitrum-sepolia_Partaj.json
+          file: ./abis/arbitrumSepolia_Partaj.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
@@ -36,7 +36,7 @@ dataSources:
       file: ./src/mapping.ts
   - kind: ethereum/contract
     name: Partaj
-    network: base-sepolia
+    network: baseSepolia
     source:
       abi: Partaj
       address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425"
@@ -55,7 +55,7 @@ dataSources:
         - CancelHandler
       abis:
         - name: Partaj
-          file: ./abis/base-sepolia_Partaj.json
+          file: ./abis/baseSepolia_Partaj.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
@@ -66,7 +66,7 @@ dataSources:
       file: ./src/mapping.ts
   - kind: ethereum/contract
     name: Partaj
-    network: bsc-testnet
+    network: bscTestnet
     source:
       abi: Partaj
       address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425"
@@ -85,7 +85,7 @@ dataSources:
         - CancelHandler
       abis:
         - name: Partaj
-          file: ./abis/bsc-testnet_Partaj.json
+          file: ./abis/bscTestnet_Partaj.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer

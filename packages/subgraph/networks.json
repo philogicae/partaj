@@ -1,17 +1,17 @@
 {
-  "arbitrum-sepolia": {
+  "arbitrumSepolia": {
     "Partaj": {
       "address": "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
       "startBlock": 28210409
     }
   },
-  "base-sepolia": {
+  "baseSepolia": {
     "Partaj": {
       "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
       "startBlock": 7978754
     }
   },
-  "bsc-testnet": {
+  "bscTestnet": {
     "Partaj": {
       "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
       "startBlock": 39004314
