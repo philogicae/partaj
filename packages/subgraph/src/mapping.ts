@@ -1,23 +1,23 @@
-import { log, BigInt } from '@graphprotocol/graph-ts';
-import { ERC721, Transfer as TransferEvent, Publish as PublishEvent, Cancel as CancelEvent } from '../generated/Partaj/Partaj';
-import { Transfer, Token, Owner, Contract, Publish, Cancel, Publication, Cancellation } from '../generated/schema';
+import { log, BigInt } from "@graphprotocol/graph-ts";
+import { Partaj, Transfer as TransferEvent } from "../generated/Partaj/Partaj";
+import { Transfer, Token, Owner, Contract } from "../generated/schema";
 
 export function handleTransfer(event: TransferEvent): void {
-  log.debug('Transfer detected. From: {} | To: {} | TokenID: {}', [
+  log.debug("Transfer detected. From: {} | To: {} | TokenID: {}", [
     event.params.from.toHexString(),
     event.params.to.toHexString(),
     event.params.tokenId.toHexString(),
-   ]);
+  ]);
 
   let previousOwner = Owner.load(event.params.from.toHexString());
   let newOwner = Owner.load(event.params.to.toHexString());
   let token = Token.load(event.params.tokenId.toHexString());
   let transferId = event.transaction.hash
     .toHexString()
-    .concat(':'.concat(event.transactionLogIndex.toHexString()));
+    .concat(":".concat(event.transactionLogIndex.toHexString()));
   let transfer = Transfer.load(transferId);
   let contract = Contract.load(event.address.toHexString());
-  let instance = ERC721.bind(event.address);
+  let instance = Partaj.bind(event.address);
 
   if (previousOwner == null) {
     previousOwner = new Owner(event.params.from.toHexString());
@@ -45,6 +45,18 @@ export function handleTransfer(event: TransferEvent): void {
     let uri = instance.try_tokenURI(event.params.tokenId);
     if (!uri.reverted) {
       token.uri = uri.value;
+    }
+    let sitename = instance.try_decodeName(event.params.tokenId);
+    if (!sitename.reverted) {
+      token.name = sitename.value;
+    }
+    let ref = instance.try_refs(event.params.tokenId);
+    if (!ref.reverted) {
+      token.ref = ref.value.toHexString();
+      let cid = instance.try_decodeCid(ref);
+      if (!cid.reverted) {
+        token.cid = cid.value;
+      }
     }
   }
 
@@ -84,43 +96,4 @@ export function handleTransfer(event: TransferEvent): void {
   token.save();
   contract.save();
   transfer.save();
-
-}
-
-export function handlePublish(event: PublishEvent): void {
-  log.debug('Publish detected. Owner: {} | TokenID: {} | Ref: {}', [
-    event.params.owner.toHexString(),
-    event.params.tokenId.toHexString(),
-    event.params.ref.toHexString(),
-  ]);
-
-  let token = Token.load(event.params.tokenId.toHexString());
-  if (!token) {
-    log.error('Token {} not found', [event.params.tokenId.toHexString()]);
-    return;
-  }
-
-  let cid = ERC721.bind(event.address).decodeCid(event.params.ref);
-
-  token.CID = cid;
-  token.EncodedCID = event.params.ref.toHexString();
-  token.save();
-
-  let publish = new Publication(event.transaction.hash.toHexString());
-  publish.token = token;
-  publish.publisher = Owner.load(event.params.owner.toHexString());
-  publish.timestamp = event.block.timestamp;
-  publish.save();
-}
-
-export function handleCancel(event: CancelEvent): void {
-  log.debug('Cancel detected. TokenID: {}', [
-    event.params.tokenId.toHexString(),
-    ]);
-
-  let cancel = new Cancellation(event.transaction.hash.toHexString());
-  cancel.token = Token.load(event.params.tokenId.toHexString());
-  cancel.canceller = Owner.load(event.params.owner.toHexString()); // assuming owner is the one who cancels the publication
-  cancel.timestamp = event.block.timestamp;
-  cancel.save();
 }
