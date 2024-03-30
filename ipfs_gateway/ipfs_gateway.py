@@ -7,7 +7,6 @@ import ipfshttpclient
 
 IPFS_CONNECT_URL = "/ip4/127.0.0.1/tcp/5001/http"
 IPFS_FILE_URL = "http://127.0.0.1:8080/ipfs/"
-DOMAIN = "http://localhost:5000"
 
 basicConfig(
     format="%(message)s", datefmt="[%d-%m %X]", level=INFO, handlers=[RichHandler()]
@@ -58,8 +57,7 @@ def up():
             client = ipfshttpclient.connect(IPFS_CONNECT_URL)
             res = client.add(file)
             logger.info("upload res: {}".format(res), {"app": "dfile-up-res"})
-            url = DOMAIN + "/" + str(res["Hash"])
-            return url
+            return str(res["Hash"])
         abort(400)
     except Exception as e:
         logger.exception("Upload Error! exception:{}".format(str(e)))
