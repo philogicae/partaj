@@ -31,6 +31,11 @@ def download(url):
         return send_file(r.raw)
 
 
+@app.route("/ping", methods=["GET"])
+def ping():
+    return "OK", 200
+
+
 @app.route("/<path:path>")
 @app.route("/down/<path:path>")
 def down(path):
