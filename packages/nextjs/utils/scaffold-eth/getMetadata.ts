@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const getMetadata = ({
   title,
   description,
-  imageRelativePath = "/thumbnail.jpg",
+  imageRelativePath = "/logo.jpg",
 }: {
   title: string;
   description: string;

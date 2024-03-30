@@ -7,14 +7,14 @@
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ GITHUB_USERNAME/your-contract",
-    "local-create": "graph create --node http://localhost:8020/ scaffold-eth/your-contract",
-    "local-remove": "graph remove --node http://localhost:8020/ scaffold-eth/your-contract",
-    "local-deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 scaffold-eth/your-contract",
-    "local-ship": "yarn abi-copy && yarn codegen && yarn build --network sepolia && yarn local-deploy",
+    "local-create": "graph create --node http://localhost:8020/ partaj",
+    "local-remove": "graph remove --node http://localhost:8020/ partaj",
+    "local-deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 partaj",
+    "local-ship": "yarn abi-copy && yarn codegen && yarn build && yarn local-deploy",
     "test": "graph test",
     "run-node": "cd graph-node && docker-compose up -d",
     "stop-node": "cd graph-node && docker-compose down",
-    "clean-node": "rm -rf graph-node/data/"
+    "clean-node": "rm -rf /docker/thegraph && mkdir -p /docker/thegraph/ipfs && mkdir -p /docker/thegraph/postgres"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.55.0",

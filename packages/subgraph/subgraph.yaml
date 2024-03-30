@@ -1,27 +1,29 @@
 specVersion: 0.0.4
-description: Greetings
-repository: https://github.com/scaffold-eth/se-2/packages/subgraph/
+description: Partaj
+repository: https://github.com/philogicae/partaj/tree/main/packages/subgraph
 schema:
   file: ./src/schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: YourContract
-    network: sepolia
+    name: Partaj
+    network: bscTestnet
     source:
-      abi: YourContract
-      address: "0xd3Bc78280dC36970a36815b1c06fBb58B6f57ACA"
-      startBlock: 5580674
+      abi: Partaj
+      address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425"
+      startBlock: 39004314
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
-        - Greeting
-        - Sender
+        - Token
+        - Owner
+        - Contract
+        - Transfer
       abis:
-        - name: YourContract
-          file: ./abis/sepolia_YourContract.json
+        - name: Partaj
+          file: ./abis/bscTestnet_Partaj.json
       eventHandlers:
-        - event: GreetingChange(indexed address,string,bool,uint256)
-          handler: handleGreetingChange
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
       file: ./src/mapping.ts

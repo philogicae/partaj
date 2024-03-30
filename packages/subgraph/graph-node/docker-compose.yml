@@ -16,9 +16,8 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: "ipfs:5001"
-      ethereum: "sepolia:https://eth-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725"
-      GRAPH_LOG: debug
-      GRAPH_ETHEREUM_GENESIS_BLOCK_NUMBER: 5580674
+      ethereum: "bsc-testnet:https://bsc-testnet.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725"
+      GRAPH_LOG: info
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
@@ -27,6 +26,7 @@ services:
     image: ipfs/go-ipfs:v0.10.0
     ports:
       - "5001:5001"
+      - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /docker/thegraph/ipfs:/data/ipfs

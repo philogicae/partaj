@@ -1,17 +1,34 @@
-type Greeting @entity {
+type Token @entity {
   id: ID!
-  sender: Sender!
-  greeting: String!
-  premium: Boolean
-  value: BigInt
-  createdAt: BigInt!
-  transactionHash: String!
+  name: String
+  ref: String
+  cid: String
+  owner: Owner
+  uri: String
+  transfers: [Transfer!]! @derivedFrom(field: "token")
+  contract: Contract
 }
 
-type Sender @entity {
+type Owner @entity {
   id: ID!
-  address: Bytes!
-  greetings: [Greeting!] @derivedFrom(field: "sender")
-  createdAt: BigInt!
-  greetingCount: BigInt!
+  ownedTokens: [Token!]! @derivedFrom(field: "owner")
+  balance: BigInt
+}
+
+type Contract @entity {
+  id: ID!
+  name: String
+  symbol: String
+  totalSupply: BigInt
+  mintedTokens: [Token!]! @derivedFrom(field: "contract")
+}
+
+type Transfer @entity {
+  id: ID!
+  token: Token!
+  from: Owner
+  to: Owner
+  timestamp: BigInt!
+  block: BigInt!
+  transactionHash: String!
 }
