@@ -74,3 +74,21 @@
 
 
 arbitrum-sepolia:https://arbitrum-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725 	base-sepolia:https://base-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725
+
+
+name: String
+  ref: String
+  cid: String
+
+let sitename = instance.try_decodeName(event.params.tokenId);
+    if (!sitename.reverted) {
+      token.name = sitename.value;
+    }
+    let ref = instance.try_refs(event.params.tokenId);
+    if (!ref.reverted) {
+      token.ref = ref.value.toHexString();
+      let cid = instance.try_decodeCid(ref);
+      if (!cid.reverted) {
+        token.cid = cid.value;
+      }
+    }

@@ -46,18 +46,6 @@ export function handleTransfer(event: TransferEvent): void {
     if (!uri.reverted) {
       token.uri = uri.value;
     }
-    let sitename = instance.try_decodeName(event.params.tokenId);
-    if (!sitename.reverted) {
-      token.name = sitename.value;
-    }
-    let ref = instance.try_refs(event.params.tokenId);
-    if (!ref.reverted) {
-      token.ref = ref.value.toHexString();
-      let cid = instance.try_decodeCid(ref);
-      if (!cid.reverted) {
-        token.cid = cid.value;
-      }
-    }
   }
 
   token.owner = event.params.to.toHexString();
