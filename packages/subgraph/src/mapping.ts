@@ -92,10 +92,22 @@ export function handlePublish(event: PublishEvent): void {
     event.params.owner.toHexString(),
     event.params.tokenId.toHexString(),
     event.params.ref.toHexString(),
-    ]);
+  ]);
+
+  let token = Token.load(event.params.tokenId.toHexString());
+  if (!token) {
+    log.error('Token {} not found', [event.params.tokenId.toHexString()]);
+    return;
+  }
+
+  let cid = ERC721.bind(event.address).decodeCid(event.params.ref);
+
+  token.CID = cid;
+  token.EncodedCID = event.params.ref.toHexString();
+  token.save();
 
   let publish = new Publication(event.transaction.hash.toHexString());
-  publish.token = Token.load(event.params.tokenId.toHexString());
+  publish.token = token;
   publish.publisher = Owner.load(event.params.owner.toHexString());
   publish.timestamp = event.block.timestamp;
   publish.save();
