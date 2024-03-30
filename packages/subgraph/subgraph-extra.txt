@@ -1,0 +1,73 @@
+- kind: ethereum/contract
+  name: Partaj-arb
+  network: arbitrumSepolia
+  source:
+    abi: Partaj
+    address: "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2"
+    startBlock: 28210409
+  mapping:
+    kind: ethereum/events
+    apiVersion: 0.0.6
+    language: wasm/assemblyscript
+    entities:
+      - Token
+      - Owner
+      - Contract
+      - Transfer
+    abis:
+      - name: Partaj
+        file: ./abis/arbitrumSepolia_Partaj.json
+    eventHandlers:
+      - event: Transfer(indexed address,indexed address,indexed uint256)
+        handler: handleTransfer
+    file: ./src/mapping.ts
+- kind: ethereum/contract
+  name: Partaj-base
+  network: baseSepolia
+  source:
+    abi: Partaj
+    address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425"
+    startBlock: 7978754
+  mapping:
+    kind: ethereum/events
+    apiVersion: 0.0.6
+    language: wasm/assemblyscript
+    entities:
+      - Token
+      - Owner
+      - Contract
+      - Transfer
+    abis:
+      - name: Partaj
+        file: ./abis/baseSepolia_Partaj.json
+    eventHandlers:
+      - event: Transfer(indexed address,indexed address,indexed uint256)
+        handler: handleTransfer
+    file: ./src/mapping.ts
+
+"arbitrumSepolia": {
+    "Partaj": {
+      "address": "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
+      "startBlock": 28210409
+    }
+  },
+  "baseSepolia": {
+    "Partaj": {
+      "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
+      "startBlock": 7978754
+    }
+  },
+
+
+"arbitrumSepolia": {
+    "Partaj": {
+      "address": "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
+      "startBlock": 28210409
+    }
+  },
+  "baseSepolia": {
+    "Partaj": {
+      "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
+      "startBlock": 7978754
+    }
+  },
