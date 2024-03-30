@@ -21,7 +21,6 @@ type Contract @entity {
   symbol: String
   totalSupply: BigInt
   mintedTokens: [Token!]! @derivedFrom(field: "contract")
-  chain: BigInt
 }
 
 type Transfer @entity {
