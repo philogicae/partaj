@@ -1,5 +1,5 @@
 - kind: ethereum/contract
-  name: Partaj-arb
+  name: Partaj
   network: arbitrumSepolia
   source:
     abi: Partaj
@@ -22,7 +22,7 @@
         handler: handleTransfer
     file: ./src/mapping.ts
 - kind: ethereum/contract
-  name: Partaj-base
+  name: Partaj
   network: baseSepolia
   source:
     abi: Partaj
@@ -71,3 +71,6 @@
       "startBlock": 7978754
     }
   },
+
+
+arbitrum-sepolia:https://arbitrum-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725 	base-sepolia:https://base-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725

@@ -5,7 +5,7 @@ schema:
   file: ./src/schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Partaj-bsc
+    name: Partaj
     network: bscTestnet
     source:
       abi: Partaj
