@@ -14,7 +14,7 @@
     "test": "graph test",
     "run-node": "cd graph-node && docker-compose up -d",
     "stop-node": "cd graph-node && docker-compose down",
-    "clean-node": "rm -rf graph-node/data/"
+    "clean-node": "rm -rf /docker/thegraph/postgres/* && rm -rf /docker/thegraph/ipfs/*"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.55.0",
