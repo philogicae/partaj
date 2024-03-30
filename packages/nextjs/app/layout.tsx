@@ -7,7 +7,7 @@ import "~~/styles/globals.css";
 const baseUrl = process.env.NEXT_PUBLIC_URL
   ? `https://${process.env.NEXT_PUBLIC_URL}`
   : `http://localhost:${process.env.PORT}`;
-const imageUrl = `${baseUrl}/thumbnail.jpg`;
+const imageUrl = `${baseUrl}/logo.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "Decentralize your website instantly",
   },
   icons: {
-    icon: [{ url: "/favicon.png", sizes: "32x32", type: "image/png" }],
+    icon: [{ url: "/logo.jpg", sizes: "32x32", type: "image/png" }],
   },
 };
 

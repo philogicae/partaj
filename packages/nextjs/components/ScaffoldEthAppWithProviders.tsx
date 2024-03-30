@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { WagmiConfig } from "wagmi";
 import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
+import Loading from "~~/components/frames/Loading";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
@@ -52,18 +53,20 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
     cache: new InMemoryCache(),
   });
 
-  return (
+  return mounted ? (
     <ApolloProvider client={apolloClient}>
       <WagmiConfig config={wagmiConfig}>
         <ProgressBar />
         <RainbowKitProvider
           chains={appChains.chains}
           avatar={BlockieAvatar}
-          theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : darkTheme()}
+          theme={isDarkMode ? darkTheme() : lightTheme()}
         >
           <ScaffoldEthApp>{children}</ScaffoldEthApp>
         </RainbowKitProvider>
       </WagmiConfig>
     </ApolloProvider>
+  ) : (
+    <Loading />
   );
 };

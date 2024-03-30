@@ -30,3 +30,9 @@ p {
 .btn.btn-ghost {
   @apply shadow-none;
 }
+
+.manual-y-center::before,
+.manual-y-center::after {
+  content: "";
+  margin: auto;
+}
