@@ -26,6 +26,7 @@ services:
     image: ipfs/go-ipfs:v0.10.0
     ports:
       - "5001:5001"
+      - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /docker/thegraph/ipfs:/data/ipfs

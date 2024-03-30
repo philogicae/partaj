@@ -1,0 +1,4 @@
+flask==1.1.1
+flask_caching==1.8.0
+requests==2.23.0
+gunicorn==19.8.1
