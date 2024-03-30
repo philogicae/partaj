@@ -11,17 +11,11 @@ const imageUrl = `${baseUrl}/thumbnail.jpg`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: {
-    default: "Scaffold-ETH 2 App",
-    template: "%s | Scaffold-ETH 2",
-  },
-  description: "Built with 🏗 Scaffold-ETH 2",
+  title: "Partaj",
+  description: "Decentralize your website instantly",
   openGraph: {
-    title: {
-      default: "Scaffold-ETH 2 App",
-      template: "%s | Scaffold-ETH 2",
-    },
-    description: "Built with 🏗 Scaffold-ETH 2",
+    title: "Partaj",
+    description: "Decentralize your website instantly",
     images: [
       {
         url: imageUrl,
@@ -31,11 +25,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     images: [imageUrl],
-    title: {
-      default: "Scaffold-ETH 2",
-      template: "%s | Scaffold-ETH 2",
-    },
-    description: "Built with 🏗 Scaffold-ETH 2",
+    title: "Partaj",
+    description: "Decentralize your website instantly",
   },
   icons: {
     icon: [{ url: "/favicon.png", sizes: "32x32", type: "image/png" }],
@@ -53,7 +44,7 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html suppressHydrationWarning>
       <body>
-        <ThemeProvider enableSystem>
+        <ThemeProvider enableSystem defaultTheme="dark">
           <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
         </ThemeProvider>
       </body>

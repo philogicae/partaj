@@ -30,7 +30,7 @@ contract Partaj is ERC721 {
 			string(
 				abi.encodePacked(
 					_baseURI(),
-					string(abi.encodePacked(bytes32(tokenId)))
+					string(abi.encodePacked((tokenId)))
 				)
 			);
 	}
@@ -45,6 +45,18 @@ contract Partaj is ERC721 {
 	function burn(uint256 tokenId) public {
 		_burn(tokenId);
 		emit Cancel(tokenId);
+	}
+
+	function encodeName(
+		string memory name
+	) external pure returns (uint256 tokenId) {
+		tokenId = uint256(bytes32(abi.encodePacked(name)));
+	}
+
+	function decodeName(
+		uint256 tokenId
+	) external pure returns (string memory name) {
+		name = string(abi.encodePacked((tokenId)));
 	}
 
 	function encodeCid(string memory cid) external pure returns (bytes32 ref) {

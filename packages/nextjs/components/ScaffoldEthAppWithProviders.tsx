@@ -46,7 +46,7 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
     setMounted(true);
   }, []);
 
-  const subgraphUri = "http://partaj.rphi.xyz/graph/subgraphs/name/scaffold-eth/your-contract";
+  const subgraphUri = "http://partaj.rphi.xyz/graph/subgraphs/name/partaj";
   const apolloClient = new ApolloClient({
     uri: subgraphUri,
     cache: new InMemoryCache(),
@@ -59,7 +59,7 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
         <RainbowKitProvider
           chains={appChains.chains}
           avatar={BlockieAvatar}
-          theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
+          theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : darkTheme()}
         >
           <ScaffoldEthApp>{children}</ScaffoldEthApp>
         </RainbowKitProvider>

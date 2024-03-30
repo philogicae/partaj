@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   97: {
     Partaj: {
-      address: "0x08738659070713B8a34C8F83e89B44F9B802Eb97",
+      address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
       abi: [
         {
           inputs: [],
@@ -199,6 +199,25 @@ const deployedContracts = {
         {
           inputs: [
             {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "decodeName",
+          outputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
               internalType: "string",
               name: "cid",
               type: "string",
@@ -210,6 +229,25 @@ const deployedContracts = {
               internalType: "bytes32",
               name: "ref",
               type: "bytes32",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          name: "encodeName",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
             },
           ],
           stateMutability: "pure",
@@ -489,7 +527,7 @@ const deployedContracts = {
   },
   84532: {
     Partaj: {
-      address: "0x08738659070713B8a34C8F83e89B44F9B802Eb97",
+      address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
       abi: [
         {
           inputs: [],
@@ -681,6 +719,25 @@ const deployedContracts = {
         {
           inputs: [
             {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "decodeName",
+          outputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
               internalType: "string",
               name: "cid",
               type: "string",
@@ -692,6 +749,25 @@ const deployedContracts = {
               internalType: "bytes32",
               name: "ref",
               type: "bytes32",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          name: "encodeName",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
             },
           ],
           stateMutability: "pure",
@@ -971,7 +1047,7 @@ const deployedContracts = {
   },
   421614: {
     Partaj: {
-      address: "0x09e10C87f476Da39991a932f47059f14b2818d75",
+      address: "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
       abi: [
         {
           inputs: [],
@@ -1163,6 +1239,25 @@ const deployedContracts = {
         {
           inputs: [
             {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "decodeName",
+          outputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
               internalType: "string",
               name: "cid",
               type: "string",
@@ -1174,6 +1269,25 @@ const deployedContracts = {
               internalType: "bytes32",
               name: "ref",
               type: "bytes32",
+            },
+          ],
+          stateMutability: "pure",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+          ],
+          name: "encodeName",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
             },
           ],
           stateMutability: "pure",
