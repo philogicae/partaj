@@ -1,80 +1,41 @@
-# 🏗 Scaffold-ETH 2
+# Partaj
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+## Description
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+Decentralize your website instantly: https://partaj.eth.limo
+Just drag and drop the output folder of your app (built or static website), and we'll give you a free permanent link. Or cancel it anytime, it's DePIN.
+Partaj is your go-to for easy, decentralized sharing. Get started now!
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+## Why Partaj?
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+- Netlify is convenient and fast for anybody that wishes to host a static website. But it's centralized.
+- About web2 solutions, Vercel is great but centralized.
+- About web3 solutions, Fleek is great but can only host your frontend at the moment. Also, you depend on their gateways & IPFS nodes, and the stability of their whole infrastructure.
+- On the other hand, Vercel and Fleek are too complicated for non-technical users to use.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+## Tech Stack
 
-## Requirements
+- Scaffold-ETH 2 (NextJS, HardHat, TheGraph)
+- Fleek (Frontend hosting)
+- Aleph.im (VM on Decentralized Cloud to host Backend)
+- TheGraph node for indexing (on VM)
+- IPFS node for storage (on VM)
+- Flask Server for IPFS gateway (on VM)
+- Blockchain testnets: BNB Chain, Base, and Arbitrum
+- ENS + Limo for decentralized domain names
 
-Before you begin, you need to install the following tools:
+## Future Developments
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+- Pay-as-you-go using stream solutions (Sablier or Llamapay) to host content continuously
+- Paid fees shared/distributed to the node runners (The whole backend can be turned into a docker-composed easy-to-run node)
+- Moved frontend from Fleek to Aleph-hosted backend node
+- Gated-access though web2/web3 auth or conditions using Lit Protocol
+- Github actions for easy continuous deployment Vercel-style
+- ENS subdomains (<name>.partaj.eth.limo) instead of pathnames (partaj.eth.limo/<name>)
+- Opensea full compatibility, for instance automatic website screenshot as a NFT cover
 
-## Quickstart
+## Links
 
-To get started with Scaffold-ETH 2, follow the steps below:
-
-1. Clone this repo & install dependencies
-
-```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
-yarn install
-```
-
-2. Run a local network in the first terminal:
-
-```
-yarn chain
-```
-
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
-
-3. On a second terminal, deploy the test contract:
-
-```
-yarn deploy
-```
-
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
-yarn start
-```
-
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
-
-Run smart contract test with `yarn hardhat:test`
-
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend in `packages/nextjs/pages`
-- Edit your deployment scripts in `packages/hardhat/deploy`
-
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+- https://partaj.eth.limo
+- https://www.youtube.com/watch?v=9v27G-uO50Q
+- https://dorahacks.io/buidl/10885
