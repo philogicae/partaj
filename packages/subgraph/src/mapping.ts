@@ -74,6 +74,7 @@ export function handleTransfer(event: TransferEvent): void {
 
   if (contract == null) {
     contract = new Contract(event.address.toHexString());
+    contract.chain = event.transaction.chainId;
   }
 
   let name = instance.try_name();

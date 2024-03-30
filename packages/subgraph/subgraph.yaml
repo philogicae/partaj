@@ -5,7 +5,7 @@ schema:
   file: ./src/schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Partaj
+    name: Partaj-arb
     network: arbitrumSepolia
     source:
       abi: Partaj
@@ -19,23 +19,16 @@ dataSources:
         - Token
         - Owner
         - Contract
-        - Publish
-        - Cancel
-        - PublishHandler
-        - CancelHandler
+        - Transfer
       abis:
         - name: Partaj
           file: ./abis/arbitrumSepolia_Partaj.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-        - event: Publish(indexed address,indexed uint256,indexed bytes32)
-          handler: handlePublish
-        - event: Cancel(indexed uint256)
-          handler: handleCancel
       file: ./src/mapping.ts
   - kind: ethereum/contract
-    name: Partaj
+    name: Partaj-base
     network: baseSepolia
     source:
       abi: Partaj
@@ -49,23 +42,16 @@ dataSources:
         - Token
         - Owner
         - Contract
-        - Publish
-        - Cancel
-        - PublishHandler
-        - CancelHandler
+        - Transfer
       abis:
         - name: Partaj
           file: ./abis/baseSepolia_Partaj.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-        - event: Publish(indexed address,indexed uint256,indexed bytes32)
-          handler: handlePublish
-        - event: Cancel(indexed uint256)
-          handler: handleCancel
       file: ./src/mapping.ts
   - kind: ethereum/contract
-    name: Partaj
+    name: Partaj-bsc
     network: bscTestnet
     source:
       abi: Partaj
@@ -79,18 +65,11 @@ dataSources:
         - Token
         - Owner
         - Contract
-        - Publish
-        - Cancel
-        - PublishHandler
-        - CancelHandler
+        - Transfer
       abis:
         - name: Partaj
           file: ./abis/bscTestnet_Partaj.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-        - event: Publish(indexed address,indexed uint256,indexed bytes32)
-          handler: handlePublish
-        - event: Cancel(indexed uint256)
-          handler: handleCancel
       file: ./src/mapping.ts
