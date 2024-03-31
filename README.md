@@ -3,15 +3,16 @@
 ## Description
 
 Decentralize your website instantly: https://partaj.eth.limo
+
 Just drag and drop the output folder of your app (built or static website), and we'll give you a free permanent link. Or cancel it anytime, it's DePIN.
-Partaj is your go-to for easy, decentralized sharing. Get started now!
+
+Built during ETHBucharest 2024.
 
 ## Why Partaj?
 
-- Netlify is convenient and fast for anybody that wishes to host a static website. But it's centralized.
-- About web2 solutions, Vercel is great but centralized.
-- About web3 solutions, Fleek is great but can only host your frontend at the moment. Also, you depend on their gateways & IPFS nodes, and the stability of their whole infrastructure.
-- On the other hand, Vercel and Fleek are too complicated for non-technical users to use.
+- About web2 solutions, Netlify is convenient and fast for anybody that wishes to host a static website. Vercel is great for devs. But those platforms are centralized.
+- About web3 solutions, Fleek is prettry good but can only host your frontend at the moment. Also, you depend on their gateways, their IPFS nodes and the stability of their whole infrastructure.
+- On the other hand, Vercel and Fleek are too complicated for non-techs to use.
 
 ## Tech Stack
 
@@ -24,6 +25,8 @@ Partaj is your go-to for easy, decentralized sharing. Get started now!
 - Blockchain testnets: BNB Chain, Base, and Arbitrum
 - ENS + Limo for decentralized domain names
 
+![Architecture](https://github.com/philogicae/partaj/assets/38438271/b0e02fff-dbe8-4da1-a343-e6a02fcdd14f)
+
 ## Future Developments
 
 - Pay-as-you-go using stream solutions (Sablier or Llamapay) to host content continuously
@@ -31,7 +34,7 @@ Partaj is your go-to for easy, decentralized sharing. Get started now!
 - Moved frontend from Fleek to Aleph-hosted backend node
 - Gated-access though web2/web3 auth or conditions using Lit Protocol
 - Github actions for easy continuous deployment Vercel-style
-- ENS subdomains (<name>.partaj.eth.limo) instead of pathnames (partaj.eth.limo/<name>)
+- ENS subdomains (name.partaj.eth.limo) instead of pathnames (partaj.eth.limo/name)
 - Opensea full compatibility, for instance automatic website screenshot as a NFT cover
 
 ## Links
