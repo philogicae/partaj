@@ -1,5 +1,5 @@
 import { log, BigInt } from "@graphprotocol/graph-ts";
-import { Partaj, Transfer as TransferEvent } from "../generated/Partaj/Partaj";
+import { Partaj, Transfer as TransferEvent, PublishEvent, CancelEvent } from "../generated/Partaj/Partaj";
 import { Transfer, Token, Owner, Contract } from "../generated/schema";
 
 export function handleTransfer(event: TransferEvent): void {
@@ -26,7 +26,7 @@ export function handleTransfer(event: TransferEvent): void {
   } else {
     let prevBalance = previousOwner.balance;
     if (prevBalance > BigInt.fromI32(0)) {
-      previousOwner.balance = prevBalance - BigInt.fromI32(1);
+      previousOwner.balance = prevBalance - Number(BigInt.fromI32(1));
     }
   }
 
@@ -38,7 +38,7 @@ export function handleTransfer(event: TransferEvent): void {
     newOwner.balance = prevBalance + BigInt.fromI32(1);
   }
 
-  if (token == null) {
+  if (!token) {
     token = new Token(event.params.tokenId.toHexString());
     token.contract = event.address.toHexString();
 
@@ -62,7 +62,7 @@ export function handleTransfer(event: TransferEvent): void {
 
   token.owner = event.params.to.toHexString();
 
-  if (transfer == null) {
+  if (!transfer) {
     transfer = new Transfer(transferId);
     transfer.token = event.params.tokenId.toHexString();
     transfer.from = event.params.from.toHexString();
@@ -72,7 +72,7 @@ export function handleTransfer(event: TransferEvent): void {
     transfer.transactionHash = event.transaction.hash.toHexString();
   }
 
-  if (contract == null) {
+  if (!contract) {
     contract = new Contract(event.address.toHexString());
   }
 
@@ -96,4 +96,53 @@ export function handleTransfer(event: TransferEvent): void {
   token.save();
   contract.save();
   transfer.save();
+}
+
+// Handle 	event Publish(address indexed owner,uint256 indexed tokenId,bytes32 indexed ref);
+// Handle 	event Cancel(uint256 indexed tokenId);
+
+export function handlePublish(event: Partaj.PublishEvent): void {
+  let tokenId = event.params.tokenId.toString();
+  let ref = event.params.ref.toHexString();
+  let token = Token.load(tokenId);
+  let contract = Contract.load(event.address.toHexString());
+
+  if (!token) {
+    token = new Token(tokenId);
+    token.contract = event.address.toHexString();
+    token.ref = ref;
+  }
+
+  token.owner = event.params.owner.toHexString();
+
+  if (!contract) {
+    contract = new Contract(event.address.toHexString());
+    contract.chain = event.transaction.chainId;
+    contract.totalSupply = BigInt.fromI32(1);
+  } else {
+    let totalSupply = contract.totalSupply;
+    contract.totalSupply = totalSupply + Number(BigInt.fromI32(1));
+  }
+
+  token.save();
+  contract.save();
+}
+
+export function handleCancel(event: Partaj.CancelEvent): void {
+  let tokenId = event.params.tokenId.toString();
+  let token = Token.load(tokenId);
+  let contract = Contract.load(event.address.toHexString());
+
+  if (token) {
+    token.owner = null;
+    token.ref = "";
+    token.uri = "";
+    token.name = "";
+    token.cid = "";
+    token.save();
+  
+    let totalSupply = contract.totalSupply;
+    contract.totalSupply = totalSupply - Number(BigInt.fromI32(1));
+    contract.save();
+  }
 }
