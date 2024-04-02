@@ -26,6 +26,7 @@ export default function Welcome() {
         </div>
         <p className="text-lg text-center"></p>
       </div>
+      <span className="p-3 text-2xl italic">Ready very soon 👀</span>
       <form
         className="flex flex-col items-center justify-between w-1/2 h-full p-10 bg-base-300"
         onSubmit={handleSubmit}

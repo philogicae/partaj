@@ -16,7 +16,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: "ipfs:5001"
-      ethereum: "bsc-testnet:https://bsc-testnet.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725"
+      ethereum: "sepolia:https://eth-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725 bsc-testnet:https://bsc-testnet.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725 arbitrum-sepolia:https://arbitrum-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725 base-sepolia:https://base-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725"
       GRAPH_LOG: info
     extra_hosts:
       - "host.docker.internal:host-gateway"
