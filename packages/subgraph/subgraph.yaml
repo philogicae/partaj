@@ -29,8 +29,4 @@ dataSources:
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-        - event: Publish(indexed address,indexed uint256,bytes32)
-          handler: handlePublish
-        - event: Cancel(indexed uint256)
-          handler: handleCancel
       file: ./src/mapping.ts

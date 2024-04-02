@@ -3,41 +3,40 @@ type _Schema_
     name: "fullTextSearch"
     language: en
     algorithm: rank
-    include: [{ entity: "Token", fields: ["name", "ref", "cid", "uri"] },
-    { entity: "Contract", fields: ["name", "symbol"] }]
+    include: [{entity: "Token", fields: [{name: "name"}, {name: "ref"}, {name: "cid"}, {name: "uri"}] },
+    {entity: "Contract", fields: [{name: "name"}, {name: "symbol"}]}]
   )
 
 type Token @entity {
-  id: ID!---
+  id: ID!
   name: String @index(fulltext: true)
   ref: String @index(fulltext: true)
   cid: String @index(fulltext: true)
   owner: Owner
   uri: String @index(fulltext: true)
-  transfers: [Transfer!]!--- @derivedFrom(field: "token")
+  transfers: [Transfer!]! @derivedFrom(field: "token")
   contract: Contract
 }
 
 type Owner @entity {
-  id: ID!---
-  ownedTokens: [Token!]!--- @derivedFrom(field: "owner")
+  id: ID!
+  ownedTokens: [Token!]! @derivedFrom(field: "owner")
   balance: BigInt
 }
 
 type Contract @entity {
-  id: ID!---
+  id: ID!
   name: String @index(fulltext: true)
   symbol: String @index(fulltext: true)
-  totalSupply: BigInt
-  mintedTokens: [Token!]!--- @derivedFrom(field: "contract")
+  mintedTokens: [Token!]! @derivedFrom(field: "contract")
 }
 
 type Transfer @entity {
-  id: ID!---
-  token: Token!---
+  id: ID!
+  token: Token!
   from: Owner
   to: Owner
-  timestamp: BigInt!---
-  block: BigInt!---
-  transactionHash: String!---
+  timestamp: BigInt!
+  block: BigInt!
+  transactionHash: String!
 }
