@@ -45,35 +45,24 @@
         handler: handleTransfer
     file: ./src/mapping.ts
 
+"sepolia": {
+  "Partaj": {
+    "address": "0x6B142CE62a0FcABd2d2558Fbd84cFA47DD08D0bc",
+    "startBlock": 5585710
+  }
+},
 "arbitrumSepolia": {
-    "Partaj": {
-      "address": "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
-      "startBlock": 28210409
-    }
-  },
-  "baseSepolia": {
-    "Partaj": {
-      "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
-      "startBlock": 7978754
-    }
-  },
-
-
-"arbitrumSepolia": {
-    "Partaj": {
-      "address": "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
-      "startBlock": 28210409
-    }
-  },
-  "baseSepolia": {
-    "Partaj": {
-      "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
-      "startBlock": 7978754
-    }
-  },
-
-
-arbitrum-sepolia:https://arbitrum-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725 	base-sepolia:https://base-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725
+  "Partaj": {
+    "address": "0x54d0b2B2Ba2Fc4B09bb75D4f202BCfd8C69424a2",
+    "startBlock": 28210409
+  }
+},
+"baseSepolia": {
+  "Partaj": {
+    "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
+    "startBlock": 7978754
+  }
+},
 
 
 name: String

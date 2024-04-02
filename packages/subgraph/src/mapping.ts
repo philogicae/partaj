@@ -1,5 +1,5 @@
 import { log, BigInt } from "@graphprotocol/graph-ts";
-import { Partaj, Transfer as TransferEvent } from "../generated/Partaj/Partaj";
+import { Partaj, Transfer as TransferEvent} from "../generated/Partaj/Partaj";
 import { Transfer, Token, Owner, Contract } from "../generated/schema";
 
 export function handleTransfer(event: TransferEvent): void {
@@ -25,8 +25,8 @@ export function handleTransfer(event: TransferEvent): void {
     previousOwner.balance = BigInt.fromI32(0);
   } else {
     let prevBalance = previousOwner.balance;
-    if (prevBalance > BigInt.fromI32(0)) {
-      previousOwner.balance = prevBalance - BigInt.fromI32(1);
+    if (prevBalance && prevBalance > BigInt.fromI32(0)) {
+      previousOwner.balance = prevBalance.minus(BigInt.fromI32(1));
     }
   }
 
@@ -35,10 +35,12 @@ export function handleTransfer(event: TransferEvent): void {
     newOwner.balance = BigInt.fromI32(1);
   } else {
     let prevBalance = newOwner.balance;
-    newOwner.balance = prevBalance + BigInt.fromI32(1);
+    if (prevBalance && prevBalance > BigInt.fromI32(0)) {
+      previousOwner.balance = prevBalance.minus(BigInt.fromI32(1));
+    }
   }
 
-  if (token == null) {
+  if (!token) {
     token = new Token(event.params.tokenId.toHexString());
     token.contract = event.address.toHexString();
 
@@ -53,7 +55,7 @@ export function handleTransfer(event: TransferEvent): void {
     let ref = instance.try_refs(event.params.tokenId);
     if (!ref.reverted) {
       token.ref = ref.value.toHexString();
-      let cid = instance.try_decodeCid(ref);
+      let cid = instance.try_decodeCid(ref.value);
       if (!cid.reverted) {
         token.cid = cid.value;
       }
@@ -62,7 +64,7 @@ export function handleTransfer(event: TransferEvent): void {
 
   token.owner = event.params.to.toHexString();
 
-  if (transfer == null) {
+  if (!transfer) {
     transfer = new Transfer(transferId);
     transfer.token = event.params.tokenId.toHexString();
     transfer.from = event.params.from.toHexString();
@@ -72,7 +74,7 @@ export function handleTransfer(event: TransferEvent): void {
     transfer.transactionHash = event.transaction.hash.toHexString();
   }
 
-  if (contract == null) {
+  if (!contract) {
     contract = new Contract(event.address.toHexString());
   }
 
@@ -86,10 +88,6 @@ export function handleTransfer(event: TransferEvent): void {
     contract.symbol = symbol.value;
   }
 
-  let totalSupply = instance.try_totalSupply();
-  if (!totalSupply.reverted) {
-    contract.totalSupply = totalSupply.value;
-  }
 
   previousOwner.save();
   newOwner.save();
