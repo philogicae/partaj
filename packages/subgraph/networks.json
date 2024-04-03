@@ -1,8 +1,8 @@
 {
-  "bscTestnet": {
+  "bsc-testnet": {
     "Partaj": {
       "address": "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425",
-      "startBlock": 39004314
+      "startBlock": 39129710
     }
   }
 }

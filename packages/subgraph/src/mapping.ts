@@ -1,5 +1,5 @@
 import { log, BigInt } from "@graphprotocol/graph-ts";
-import { Partaj, Transfer as TransferEvent} from "../generated/Partaj/Partaj";
+import { Partaj, Transfer as TransferEvent } from "../generated/Partaj/Partaj";
 import { Transfer, Token, Owner, Contract } from "../generated/schema";
 
 export function handleTransfer(event: TransferEvent): void {
@@ -87,7 +87,6 @@ export function handleTransfer(event: TransferEvent): void {
   if (!symbol.reverted) {
     contract.symbol = symbol.value;
   }
-
 
   previousOwner.save();
   newOwner.save();

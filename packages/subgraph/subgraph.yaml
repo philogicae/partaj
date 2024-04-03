@@ -1,7 +1,6 @@
 specVersion: 0.0.4
 description: Partaj
 features:
-  - fullTextSearch
   - nonFatalErrors
 repository: https://github.com/philogicae/partaj/tree/main/packages/subgraph
 schema:
@@ -9,11 +8,11 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: Partaj
-    network: bscTestnet
+    network: bsc-testnet
     source:
       abi: Partaj
       address: "0x26a89dc732D65DD73893614b37eC1bcB3f9E8425"
-      startBlock: 39004314
+      startBlock: 39129710
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6

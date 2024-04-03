@@ -1,19 +1,10 @@
-type _Schema_
-  @fulltext(
-    name: "fullTextSearch"
-    language: en
-    algorithm: rank
-    include: [{entity: "Token", fields: [{name: "name"}, {name: "ref"}, {name: "cid"}, {name: "uri"}] },
-    {entity: "Contract", fields: [{name: "name"}, {name: "symbol"}]}]
-  )
-
 type Token @entity {
   id: ID!
-  name: String @index(fulltext: true)
-  ref: String @index(fulltext: true)
-  cid: String @index(fulltext: true)
+  name: String
+  ref: String
+  cid: String
   owner: Owner
-  uri: String @index(fulltext: true)
+  uri: String
   transfers: [Transfer!]! @derivedFrom(field: "token")
   contract: Contract
 }
@@ -26,8 +17,8 @@ type Owner @entity {
 
 type Contract @entity {
   id: ID!
-  name: String @index(fulltext: true)
-  symbol: String @index(fulltext: true)
+  name: String
+  symbol: String
   mintedTokens: [Token!]! @derivedFrom(field: "contract")
 }
 

@@ -81,3 +81,7 @@ let sitename = instance.try_decodeName(event.params.tokenId);
         token.cid = cid.value;
       }
     }
+
+sepolia:https://eth-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725
+arbitrumSepolia:https://arbitrum-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725
+baseSepolia:https://base-sepolia.blastapi.io/4a467616-1213-4975-bd59-c0c01afa7725
