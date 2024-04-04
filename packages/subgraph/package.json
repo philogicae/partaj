@@ -12,7 +12,7 @@
     "local-deploy": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 partaj",
     "local-ship": "yarn abi-copy && yarn codegen && yarn build && yarn local-deploy",
     "test": "graph test",
-    "run-node": "cd graph-node && docker-compose up -d",
+    "run-node": "cd graph-node && docker-compose up -d && sleep 5 && docker exec graph-node-ipfs-1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '[\"https://partaj.rphi.xyz\", \"http://[2a01:240:ad00:2200:3:fe86:6619:eb31]:5001\", \"http://127.0.0.1:5001\"]' && docker exec graph-node-ipfs-1 ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods '[\"PUT\", \"POST\"]' && docker exec graph-node-ipfs-1 ipfs config --json API.Addresses.API '[\"/ip4/127.0.0.1/tcp/5001\", \"/ip6/::1/tcp/5001\"]' && docker exec graph-node-ipfs-1 ipfs config --json API.Addresses.Gateway '[\"/ip4/127.0.0.1/tcp/5001\", \"/ip6/::1/tcp/5001\"]'",
     "stop-node": "cd graph-node && docker-compose down",
     "clean-node": "rm -rf /docker/thegraph && mkdir -p /docker/thegraph/ipfs && mkdir -p /docker/thegraph/postgres"
   },
